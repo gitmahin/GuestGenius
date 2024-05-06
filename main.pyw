@@ -20,17 +20,19 @@ form_frame.pack(anchor=CENTER, side=TOP)
 
 def resetForm():
     [widget.delete(0, END) for widget in form_frame.winfo_children() if isinstance(widget, Entry)]
-    smokeVal.set(0)
-    familyVal.set(0)
-    privateBalconyVal.set(0)
-    personaVal.set(0)
-    loungeVal.set(0)
+    smokeVal.set("")
+    familyVal.set("")
+    privateBalconyVal.set("")
+    personaVal.set("")
+    loungeVal.set("")
     typeOfTravVal.set("Solo")
     menuVal.set("Select your travel purpose")
     genderVal.set(0)
 
 def cancleForm():
     resetForm()
+    caption.configure(text="Cancled", fg="red")
+
 
 def saveGuestData():
     data = {"Name": [], "Email": [], "Phone": [], "Gender": [], "Profession": [], "Special requests": [], "Travel purpose": [], "Type of traveler": [], "Duration of stay": [] }
