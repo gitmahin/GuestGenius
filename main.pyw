@@ -13,6 +13,19 @@ main_frame.pack(expand=1, fill=BOTH)
 
 Label(main_frame, text="Hotel guest data manager - GuestGenius", font="Roboto, 15 bold", fg="#6c5ce7").pack(anchor=CENTER, side=TOP, pady=10)
 
+form_frame = Frame(main_frame, pady=20)
+form_frame.pack(anchor=CENTER, side=TOP)
+
+def resetForm():
+    [widget.delete(0, END) for widget in form_frame.winfo_children() if isinstance(widget, Entry)]
+    smokeVal.set(0)
+    familyVal.set(0)
+    privateBalconyVal.set(0)
+    personaVal.set(0)
+    loungeVal.set(0)
+    typeOfTravVal.set("Solo")
+    menuVal.set("Select your travel purpose")
+
 def saveGuestData():
     data = {"Name": [], "Email": [], "Phone": [], "Profession": [], "Special requests": [], "Travel purpose": [], "Type of traveler": [], "Duration of stay": [] }
 
@@ -30,16 +43,15 @@ def saveGuestData():
         dataFrame = pd.DataFrame.from_dict(data)
         if(isFile):
             dataFrame.to_csv("data.csv", mode="a", index=False, header=False)
-            caption.configure(text="File updated", fg="#00b894")
+            caption.configure(text="File updated", fg="#00b894")  
+            resetForm()
         else:
             dataFrame.to_csv("data.csv", mode="a", index=False, header=True)
             caption.configure(text="File created", fg="#00b894")
+            resetForm()
     except Exception as e:
         caption.configure(text="Something went wrong", fg="red")
 
-
-form_frame = Frame(main_frame, pady=20)
-form_frame.pack(anchor=CENTER, side=TOP)
 
 # labels
 Label(form_frame, text="Name:", font="Roboto 11 bold").grid(row=0, column=0, sticky=W, padx=10, pady=5)
