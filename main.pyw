@@ -54,7 +54,7 @@ def saveGuestData():
             resetForm()
         else:
             dataFrame.to_csv("data.csv", mode="a", index=False, header=True)
-            caption.configure(text="File created", fg="#00b894")
+            caption.configure(text="File created & saved", fg="#00b894")
             resetForm()
     except Exception as e:
         caption.configure(text="Something went wrong", fg="red")
