@@ -53,10 +53,10 @@ def cancleForm():
 def saveGuestData():
     data = {"Name": [], "Email": [], "Phone": [], "Gender": [], "Profession": [], "Special requests": [], "Travel purpose": [], "Type of traveler": [], "Duration of stay": [] }
     checkBox_val  = f"{smokeVal.get()}{familyVal.get()}{privateBalconyVal.get()}{personaVal.get()}{loungeVal.get()}"
-
+    print(phoneVal.get())
     data["Name"].append(nameVal.get())
     data["Email"].append(emailVal.get())
-    data["Phone"].append(phoneVal.get())
+    data["Phone"].append(f"'{phoneVal.get()}'")
     data["Gender"].append(genderVal.get())
     data["Profession"].append(professionVal.get())
     data["Special requests"].append(checkBox_val)
@@ -81,6 +81,7 @@ def saveGuestData():
                             caption.configure(text="File created & saved", fg="#00b894")
                             resetForm()
                     except Exception as e:
+                        print(e)
                         caption.configure(text="Something went wrong :(", fg="red")
                 else:
                     tmsg.showerror("Error", "Gender is required :(")
@@ -142,7 +143,6 @@ Entry(form_frame, textvariable=nameVal, font=entry_Font, width=30).grid(row=0, c
 Entry(form_frame, textvariable=emailVal, font=entry_Font, width=30).grid(row=1, column=1, sticky=W)
 phoneEntry = Entry(form_frame, textvariable=phoneVal, font=entry_Font, width=30)
 phoneEntry.grid(row=2, column=1, sticky=W)
-phoneEntry.insert(0, "Include country code")
 radio = Radiobutton(form_frame, text="Male", variable=genderVal, value="Male", font=radioBtn_Font).grid(row=3, column=1, sticky=W)
 radio = Radiobutton(form_frame, text="Female", variable=genderVal, value="Female", font=radioBtn_Font).grid(row=4, column=1, sticky=W)
 radio = Radiobutton(form_frame, text="Other", variable=genderVal, value="Other", font=radioBtn_Font).grid(row=5, column=1, sticky=W)
