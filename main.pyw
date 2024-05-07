@@ -83,6 +83,7 @@ def saveGuestData():
                     except Exception as e:
                         print(e)
                         caption.configure(text="Something went wrong :(", fg="red")
+                        tmsg.showerror("Error", "Please ensure that the data.csv file is closed.")
                 else:
                     tmsg.showerror("Error", "Gender is required :(")
             else:
