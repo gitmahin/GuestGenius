@@ -53,7 +53,6 @@ def cancleForm():
 def saveGuestData():
     data = {"Name": [], "Email": [], "Phone": [], "Gender": [], "Profession": [], "Special requests": [], "Travel purpose": [], "Type of traveler": [], "Duration of stay": [] }
     checkBox_val  = f"{smokeVal.get()}{familyVal.get()}{privateBalconyVal.get()}{personaVal.get()}{loungeVal.get()}"
-    print(phoneVal.get())
     data["Name"].append(nameVal.get())
     data["Email"].append(emailVal.get())
     data["Phone"].append(f"'{phoneVal.get()}'")
@@ -81,7 +80,6 @@ def saveGuestData():
                             caption.configure(text="File created & saved", fg="#00b894")
                             resetForm()
                     except Exception as e:
-                        print(e)
                         caption.configure(text="Something went wrong :(", fg="red")
                         tmsg.showerror("Error", "Please ensure that the data.csv file is closed.")
                 else:
