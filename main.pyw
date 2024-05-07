@@ -24,9 +24,6 @@ def validatePhoneNumber(s):
     Pattern = re.compile(r'^\+\d{1,3}\d{6,12}$')
     # This can validate the phone numbers of
     # United States (`+1`),
-    # United Kingdom (`+44`),
-    # United Kingdom (`+44`),
-    # United Kingdom (`+44`),
     # Canada (`+1`),
     # Bangladesh (`+880`),
     # Australia (`+61`),
