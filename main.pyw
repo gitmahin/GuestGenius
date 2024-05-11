@@ -62,13 +62,13 @@ def saveGuestData():
 
     isFile = os.path.isfile("data.csv")
 
-    if(nameVal.get() and emailVal.get() and phoneVal.get() and professionVal.get() and stayVal.get() != ""):
-        if(re.fullmatch(email_validator, emailVal.get())):
-            if(validatePhoneNumber(phoneVal.get())):
-                if(genderVal.get() != "0"):
+    if nameVal.get() and emailVal.get() and phoneVal.get() and professionVal.get() and stayVal.get() != "":
+        if re.fullmatch(email_validator, emailVal.get()):
+            if validatePhoneNumber(phoneVal.get()):
+                if genderVal.get() != "0":
                     try:
                         dataFrame = pd.DataFrame.from_dict(data)
-                        if(isFile):
+                        if isFile:
                             dataFrame.to_csv("data.csv", mode="a", index=False, header=False)
                             caption.configure(text="File updated", fg="#00b894")  
                             resetForm()
